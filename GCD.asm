@@ -1,3 +1,4 @@
+.code
 ;==================
 ;GCD(x,y)
 ;eax : x
@@ -16,3 +17,4 @@ GCD PROC USES edx
 return:
 	ret
 GCD ENDP
+END
