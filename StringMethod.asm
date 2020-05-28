@@ -61,4 +61,26 @@ L1:
 Return:
 	ret
 strlen ENDP
+
+;====================
+;將字串2接在字串1後面
+;輸入 edi : 字串1
+;輸入 esi : 字串2
+;====================
+strcat PROC USES eax ecx
+	push edi
+	push esi
+	xchg esi,edi
+	call strlen
+	xchg esi,edi
+	add edi,eax
+	call strlen
+	mov ecx,eax
+	inc ecx;加上null byte
+	cld
+	rep movsb
+	pop esi
+	pop edi
+	ret
+strcat ENDP
 END
