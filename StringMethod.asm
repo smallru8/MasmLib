@@ -83,4 +83,31 @@ strcat PROC USES eax ecx
 	pop edi
 	ret
 strcat ENDP
+
+;====================
+;反轉String
+;輸入 edi : String
+;輸入 eax : length
+;====================
+strrev PROC USES ecx edx
+	LOCAL ediPtr:DWORD
+	mov ediPtr,edi
+	mov ecx,eax
+	mov edx,0
+L1:
+	mov dl,BYTE PTR [edi]
+	push edx
+	inc edi
+	loop L1
+	mov edi,ediPtr
+	mov ecx,eax
+L2:
+	pop edx
+	mov BYTE PTR [edi],dl
+	inc edi
+	loop L2
+	mov edi,ediPtr
+	ret
+reverse ENDP
+
 END
