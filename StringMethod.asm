@@ -110,4 +110,26 @@ L2:
 	ret
 strrev ENDP
 
+;====================
+;搜尋字串中輸入Char的位置
+;輸入 edi : String
+;輸入 al : char
+;輸出 eax : 位置
+;====================
+strfind PROC USES esi ecx edx
+	LOCAL char:BYTE
+	mov esi,edi
+	mov char,al
+	call strlen
+	mov ecx,eax
+	mov eax,0
+L1:
+	mov dl,BYTE PTR [esi+eax]
+	cmp dl,char
+	je Return
+	inc eax
+	loop L1
+Return:
+	ret
+strfind ENDP
 END
