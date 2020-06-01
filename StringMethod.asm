@@ -108,6 +108,6 @@ L2:
 	loop L2
 	mov edi,ediPtr
 	ret
-reverse ENDP
+strrev ENDP
 
 END
